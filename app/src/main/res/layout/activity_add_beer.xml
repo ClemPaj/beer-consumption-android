@@ -47,6 +47,13 @@
             android:layout_height="wrap_content"
             android:text="@string/add_beer_button"
             android:onClick="addBeer"/>
+        <TextView
+            android:id="@+id/warning_add_beer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:textSize="20dp"
+            android:layout_marginTop="8dp"/>
     </LinearLayout>
 
 </RelativeLayout>

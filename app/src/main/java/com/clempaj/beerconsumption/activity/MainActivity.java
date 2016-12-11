@@ -8,11 +8,10 @@ import android.view.View;
 
 import com.clempaj.beerconsumption.R;
 import com.clempaj.beerconsumption.db.BeerContract;
-import com.clempaj.beerconsumption.db.BeerDbHelper;
-import com.clempaj.beerconsumption.db.ConsumptionDbHelper;
+import com.clempaj.beerconsumption.db.BeerDataAccess;
+import com.clempaj.beerconsumption.db.ConsumptionDataAccess;
 
 public class MainActivity extends AppCompatActivity {
-
     public static final String SUCCEDED = "com.example.clement.myapplication.SUCCEDED";
 
     @Override
@@ -45,16 +44,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void deleteAllBeers(View view) {
-        BeerDbHelper helper = new BeerDbHelper(getApplicationContext());
-        SQLiteDatabase db = helper.getWritableDatabase();
-
-        db.delete(BeerContract.BeerEntry.TABLE_NAME, null, null);
+        BeerDataAccess beerAccess = new BeerDataAccess(getApplicationContext());
+        beerAccess.deleteBeers();
     }
 
     public void deleteAllConsumptions(View view) {
-        ConsumptionDbHelper helper = new ConsumptionDbHelper(getApplicationContext());
-        SQLiteDatabase db = helper.getWritableDatabase();
-
-        db.delete(BeerContract.ConsumptionEntry.TABLE_NAME, null, null);
+        ConsumptionDataAccess consumptionAccess = new ConsumptionDataAccess(getApplicationContext());
+        consumptionAccess.deleteConsumptions();
     }
 }
