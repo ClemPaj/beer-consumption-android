@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -21,9 +22,14 @@ public class AddBeerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_beer);
 
         beerAccess = new BeerDataAccess(getApplicationContext());
-        TextView alcohol = (TextView) findViewById(R.id.add_beer_alcohol);
-        alcohol.setOnEditorActionListener(new OnEditorDoneAddBeer());
+        TextView alcoholView = (TextView) findViewById(R.id.add_beer_alcohol);
+        alcoholView.setOnEditorActionListener(new OnEditorDoneAddBeer());
         clearWarningText();
+
+        View nameView = findViewById(R.id.add_beer_name);
+        if(nameView.requestFocus()) {
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        }
     }
 
     private class OnEditorDoneAddBeer implements TextView.OnEditorActionListener {
