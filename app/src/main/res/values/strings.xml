@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">0 DRINKS</string>
+    <string name="beer_volume">Volume</string>
+    <string name="beer_name">Bière</string>
+    <string name="button_add_consumption">Nouvelle conso</string>
+    <string name="button_add_beer">Nouvelle bière</string>
+    <string name="button_view_consumption">Voir consommation</string>
+    <string name="hint_volume">Volume (en cl)</string>
+    <string name="button_volume">GO !</string>
+    <string name="cl50">50 cl</string>
+    <string name="cl25">25 cl</string>
+    <string name="cl33">33 cl</string>
+    <string name="time_now">NOW !</string>
+    <string name="add_beer_name">Nom</string>
+    <string name="add_beer_name_hint">Nom bière</string>
+    <string name="add_beer_alcohol">Alcool (en °)</string>
+    <string name="add_beer_alcohol_hint">Alcool (en °)</string>
+    <string name="add_beer_button">Ajouter</string>
+    <string name="title_beer">Bière</string>
+    <string name="title_volume">Vol</string>
+    <string name="title_date">Date</string>
+    <string name="button_delete_all_beers">Supprimer toutes bières</string>
+    <string name="button_delete_all_consumptions">Supprimer toutes consommations</string>
+    <string name="nels">NE PAS CLIQUER</string>
+</resources>
