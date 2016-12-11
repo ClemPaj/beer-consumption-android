@@ -29,7 +29,7 @@
                 android:layout_columnWeight="1"
                 android:hint="@string/add_beer_name_hint"
                 android:maxLines="1"
-                android:inputType="text"
+                android:inputType="textCapWords|text"
                 android:imeOptions="actionNext"
                 />
             <TextView

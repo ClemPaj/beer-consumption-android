@@ -67,7 +67,7 @@ public class AddBeerActivity extends AppCompatActivity {
             setWarningTextAndFocus(nameView, getString(R.string.add_beer_warning_empty_name));
             return null;
         }
-        return name.substring(0, 1).toUpperCase() + name.substring(1);
+        return name;
     }
 
     private Double getAlcohol() {
