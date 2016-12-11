@@ -46,16 +46,16 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CONSUMPTION_SQL_CREATE_ENTRIES);
         db.execSQL(BEER_SQL_CREATE_ENTRIES);
+        db.execSQL(CONSUMPTION_SQL_CREATE_ENTRIES);
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         return;
     }
 
-    public void deleteTables(SQLiteDatabase db) {
-        db.execSQL(CONSUMPTION_SQL_DELETE_ENTRIES);
-        db.execSQL(BEER_SQL_CREATE_ENTRIES);
+    @Override
+    public void onConfigure(SQLiteDatabase db){
+        db.setForeignKeyConstraintsEnabled(true);
     }
 }
