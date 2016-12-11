@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">0 DRINKS</string>
+    <string name="app_name">BEER</string>
     <string name="beer_volume">Volume</string>
     <string name="beer_name">Bière</string>
     <string name="button_add_consumption">Nouvelle conso</string>
