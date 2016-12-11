@@ -1,13 +1,10 @@
 package com.clempaj.beerconsumption.activity;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.clempaj.beerconsumption.R;
-import com.clempaj.beerconsumption.db.BeerContract;
 import com.clempaj.beerconsumption.db.ConsumptionDataAccess;
 
 import java.util.Date;

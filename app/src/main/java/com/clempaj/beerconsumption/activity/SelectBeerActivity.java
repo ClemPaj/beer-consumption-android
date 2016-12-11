@@ -27,6 +27,11 @@ public class SelectBeerActivity extends AppCompatActivity {
         listView.setAdapter(new BeerAdapter(this, beers));
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 
     public void selectBeer(View view) {
         Beer beer = (Beer) view.getTag();

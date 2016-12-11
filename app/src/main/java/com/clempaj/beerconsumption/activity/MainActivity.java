@@ -1,13 +1,11 @@
 package com.clempaj.beerconsumption.activity;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
 import com.clempaj.beerconsumption.R;
-import com.clempaj.beerconsumption.db.BeerContract;
 import com.clempaj.beerconsumption.db.BeerDataAccess;
 import com.clempaj.beerconsumption.db.ConsumptionDataAccess;
 
@@ -18,6 +16,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, NelsActivity.class);
+        startActivity(intent);
     }
 
     public void addConsumption(View view) {

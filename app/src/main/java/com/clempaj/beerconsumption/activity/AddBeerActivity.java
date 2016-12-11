@@ -1,8 +1,6 @@
 package com.clempaj.beerconsumption.activity;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +8,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.clempaj.beerconsumption.R;
-import com.clempaj.beerconsumption.db.BeerContract;
 import com.clempaj.beerconsumption.db.BeerDataAccess;
 
 public class AddBeerActivity extends AppCompatActivity {
@@ -36,10 +33,10 @@ public class AddBeerActivity extends AppCompatActivity {
 
     public void addBeer(View view) {
         clearWarningText();
-        Double alcohol = getAlcohol();
-        if (alcohol == null) return;
         String name = getName();
         if (name == null) return;
+        Double alcohol = getAlcohol();
+        if (alcohol == null) return;
         if (!beerAccess.addBeer(name, alcohol.doubleValue())) {
             setWarningText(getString(R.string.add_beer_warning_db_failed));
             return;
