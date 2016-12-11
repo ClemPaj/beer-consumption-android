@@ -10,7 +10,7 @@ import com.clempaj.beerconsumption.R;
 import java.util.Date;
 
 public class SelectDateActivity extends AppCompatActivity {
-    public final static String DATE = "com.example.clement.myapplication.DATE";
+    public final static String DATE = "com.clempaj.beerconsumption.DATE";
     private long beerId;
     private int volume;
 

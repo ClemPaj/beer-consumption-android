@@ -10,8 +10,6 @@ import com.clempaj.beerconsumption.db.BeerDataAccess;
 import com.clempaj.beerconsumption.db.ConsumptionDataAccess;
 
 public class MainActivity extends AppCompatActivity {
-    public static final String SUCCEDED = "com.example.clement.myapplication.SUCCEDED";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,19 +30,6 @@ public class MainActivity extends AppCompatActivity {
     public void viewConsumption(View view) {
         Intent in = new Intent(this, ViewConsumptionActivity.class);
         startActivity(in);
-    }
-
-    public static void setSucceded(Intent intent, boolean succeded) {
-        intent.putExtra(SUCCEDED, succeded);
-    }
-
-    public static boolean getSucceded(Intent intent) {
-        return intent.getBooleanExtra(SUCCEDED, true);
-    }
-
-    public void nels(View view) {
-        Intent intent = new Intent(this, NelsActivity.class);
-        startActivity(intent);
     }
 
     public void deleteAllBeers(View view) {

@@ -21,9 +21,7 @@
     <string name="title_date">Date</string>
     <string name="button_delete_all_beers">Supprimer toutes bières</string>
     <string name="button_delete_all_consumptions">Supprimer toutes consommations</string>
-    <string name="nels">NE PAS CLIQUER</string>
     <string name="add_beer_warning_db_failed">Impossible d\'ajouter la bière. Le nom est peut-être déjà utilisé.</string>
-    <string name="add_beer_warning_no_name">Le nom doit être renseigné.</string>
     <string name="add_beer_warning_empty_name">Le nom ne doit pas être vide.</string>
     <string name="add_beer_warning_no_alcohol">Le taux d\'alcool doit être renseigné.</string>
     <string name="add_beer_warning_bad_alcohol">Le taux d\'alcool doit être un nombre valide.</string>

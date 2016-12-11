@@ -3,7 +3,9 @@ package com.clempaj.beerconsumption.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -19,15 +21,19 @@ public class AddBeerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_beer);
 
         beerAccess = new BeerDataAccess(getApplicationContext());
-        findViewById(R.id.add_beer_name).setOnFocusChangeListener(new OnChangeFocusClearWarning());
-        findViewById(R.id.add_beer_alcohol).setOnFocusChangeListener(new OnChangeFocusClearWarning());
+        TextView alcohol = (TextView) findViewById(R.id.add_beer_alcohol);
+        alcohol.setOnEditorActionListener(new OnEditorDoneAddBeer());
         clearWarningText();
     }
 
-    private class OnChangeFocusClearWarning implements View.OnFocusChangeListener {
+    private class OnEditorDoneAddBeer implements TextView.OnEditorActionListener {
         @Override
-        public void onFocusChange(View view, boolean b) {
-            clearWarningText();
+        public boolean onEditorAction(TextView textView, int action, KeyEvent keyEvent) {
+            if (action == EditorInfo.IME_ACTION_DONE) {
+                addBeer(textView);
+                return true;
+            }
+            return false;
         }
     }
 
@@ -37,42 +43,42 @@ public class AddBeerActivity extends AppCompatActivity {
         if (name == null) return;
         Double alcohol = getAlcohol();
         if (alcohol == null) return;
-        if (!beerAccess.addBeer(name, alcohol.doubleValue())) {
-            setWarningText(getString(R.string.add_beer_warning_db_failed));
+        if (!beerAccess.addBeer(name, alcohol)) {
+            View nameView = findViewById(R.id.add_beer_name);
+            setWarningTextAndFocus(nameView, getString(R.string.add_beer_warning_db_failed));
             return;
         }
 
-        Intent intent = new Intent(this, SelectBeerActivity.class); //TODO: revenir au parent
+        Intent intent = new Intent(this, SelectBeerActivity.class);
         startActivity(intent);
     }
 
     private String getName() {
-        String name = ((EditText) findViewById(R.id.add_beer_name)).getText().toString();
-        if (name == null) {
-            setWarningText(getString(R.string.add_beer_warning_no_name));
-            return null;
-        }
+        EditText nameView = (EditText) findViewById(R.id.add_beer_name);
+        String name = nameView.getText().toString();
         name = name.trim();
         if (name.length() == 0) {
-            setWarningText(getString(R.string.add_beer_warning_empty_name));
+            setWarningTextAndFocus(nameView, getString(R.string.add_beer_warning_empty_name));
             return null;
         }
         return name.substring(0, 1).toUpperCase() + name.substring(1);
     }
 
     private Double getAlcohol() {
+        EditText alcoholView = (EditText) findViewById(R.id.add_beer_alcohol);
         try {
-            return Double.parseDouble(((EditText) findViewById(R.id.add_beer_alcohol)).getText().toString());
+            return Double.parseDouble(alcoholView.getText().toString());
         } catch (NumberFormatException e) {
-            setWarningText(getString(R.string.add_beer_warning_bad_alcohol));
+            setWarningTextAndFocus(alcoholView, getString(R.string.add_beer_warning_bad_alcohol));
         } catch (NullPointerException e) {
-            setWarningText(getString(R.string.add_beer_warning_no_alcohol));
+            setWarningTextAndFocus(alcoholView, getString(R.string.add_beer_warning_no_alcohol));
         }
         return null;
     }
 
-    private void setWarningText(String warningText) {
+    private void setWarningTextAndFocus(View view, String warningText) {
         getWarning().setText(warningText);
+        view.requestFocus();
     }
 
     private void clearWarningText() {

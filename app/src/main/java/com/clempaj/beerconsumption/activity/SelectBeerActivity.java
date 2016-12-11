@@ -14,7 +14,7 @@ import com.clempaj.beerconsumption.db.BeerDataAccess;
 import java.util.List;
 
 public class SelectBeerActivity extends AppCompatActivity {
-    public final static String BEER_ID = "com.example.clement.myapplication.BEER_ID";
+    public final static String BEER_ID = "com.clempaj.beerconsumption.BEER_ID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -21,10 +21,9 @@ public class AddConsumptionActivity extends AppCompatActivity {
         int volume = SelectVolumeActivity.getVolume(intent);
 
         ConsumptionDataAccess consumptionAccess = new ConsumptionDataAccess(getApplicationContext());
-        boolean succeded = consumptionAccess.addConsumption(beerId, date, volume);
+        consumptionAccess.addConsumption(beerId, date, volume);
 
         Intent leave = new Intent(this, MainActivity.class);
-        MainActivity.setSucceded(intent, succeded);
         startActivity(leave);
     }
 }
